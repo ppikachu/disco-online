@@ -45,6 +45,10 @@
                      :total="pagination.total"
                      type="type"
                      v-if="pagination.total > 1"></Pagination> -->
+          <div class="flex flex-col space-y-2 py-4 justify-center items-center text-sm">
+            <p>{{ pagination.total }} discos</p>
+            <p>página <input v-model="pagination.page" class="px-1 rounded bg-gray-700 w-20 text-center" /><span> de {{ pagination.total/pagination.rowsPerPage }}</span></p>
+          </div>
           <div class="flex space-x-4 py-4 justify-center">
             <button @click="back" :disabled="pagination.page===1" class="px-4 py-1 rounded bg-green-700 disabled:opacity-50" >atrás</button>
             <button @click="next" :disabled="pagination.page===count" class="px-4 py-1 rounded bg-green-700" >siguiente</button>
@@ -63,10 +67,10 @@ export default {
     return {
       data1: [],
       pagination: {
-      page: 1,
-      total: 0,
-      rowsPerPage: 5
-    }
+        page: 1,
+        total: 0,
+        rowsPerPage: 5
+      }
     }
   },
   methods: {
