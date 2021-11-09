@@ -1,10 +1,11 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+  ssr: false, // Disable Server Side rendering
 
   // Global App headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'My Nuxt Application',
+    title: 'Disco-online',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
