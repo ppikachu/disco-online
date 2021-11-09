@@ -8,6 +8,8 @@
       <div class="text-gray-100 overflow-hidden">
 
         <section class="p-4">
+          <p class="text-center text-gray-400">Esta página es una prueba de datos tomados de una hoja de cálculo de Google Docs</p>
+          <a class="text-center w-full block my-4" href="https://docs.google.com/spreadsheets/d/1qh8ot3ytK11Yd1w2ikftL6fv6sUueHKrBd4q23Fxppc/edit?usp=sharing" target="_blank" >link a los datos</a>
           <div class="flex space-x-4 py-4 justify-center">
             <button @click="back" :disabled="pagination.page===1" class="px-4 py-1 rounded bg-green-700 disabled:opacity-50" >atrás</button>
             <button @click="next" :disabled="pagination.page===count" class="px-4 py-1 rounded bg-green-700" >siguiente</button>
