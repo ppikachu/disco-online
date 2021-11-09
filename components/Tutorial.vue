@@ -12,7 +12,7 @@
           <a class="text-center w-full block my-4" href="https://docs.google.com/spreadsheets/d/1qh8ot3ytK11Yd1w2ikftL6fv6sUueHKrBd4q23Fxppc/edit?usp=sharing" target="_blank" >link a los datos</a>
           <div class="flex space-x-4 py-4 justify-center">
             <button @click="back" :disabled="pagination.page===1" class="px-4 py-1 rounded bg-green-700 disabled:opacity-50" >atrás</button>
-            <button @click="next" :disabled="pagination.page===count" class="px-4 py-1 rounded bg-green-700" >siguiente</button>
+            <button @click="next" :disabled="pagination.page===pagination.total/pagination.rowsPerPage" class="px-4 py-1 rounded bg-green-700" >siguiente</button>
           </div>
 
           <ul class="">
@@ -47,11 +47,11 @@
                      v-if="pagination.total > 1"></Pagination> -->
           <div class="flex flex-col space-y-2 py-4 justify-center items-center text-sm">
             <p>{{ pagination.total }} discos</p>
-            <p>página <input v-model="pagination.page" class="px-1 rounded bg-gray-700 w-20 text-center" /><span> de {{ pagination.total/pagination.rowsPerPage }}</span></p>
+            <p>página <input v-model.number="pagination.page" class="px-1 rounded bg-gray-700 w-20 text-center" /><span> de {{ pagination.total/pagination.rowsPerPage }}</span></p>
           </div>
           <div class="flex space-x-4 py-4 justify-center">
             <button @click="back" :disabled="pagination.page===1" class="px-4 py-1 rounded bg-green-700 disabled:opacity-50" >atrás</button>
-            <button @click="next" :disabled="pagination.page===count" class="px-4 py-1 rounded bg-green-700" >siguiente</button>
+            <button @click="next" :disabled="pagination.page===pagination.total/pagination.rowsPerPage" class="px-4 py-1 rounded bg-green-700" >siguiente</button>
           </div>
         </section>
 
@@ -77,11 +77,11 @@ export default {
     parseSheet (sheetId, sheetName = null) {
       return this.$gsparser.parse(sheetId, sheetName)
     },
-    next() {
-      this.pagination.page += 1
-    },
     back() {
       this.pagination.page -= 1
+    },
+    next() {
+      this.pagination.page += 1
     },
   },
   computed: {
